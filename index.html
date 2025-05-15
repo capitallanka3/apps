@@ -1,110 +1,129 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ලියාපදිංචි වීමේ පෝරමය</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Capital Lanka Loan Application</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f8f8f8; }
-    label { display: block; margin-top: 10px; font-weight: bold; }
-    input, select { width: 100%; padding: 8px; margin-top: 5px; }
-    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    h2 { text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #bbb;
+      border-radius: 5px;
+    }
+    .gender {
+      display: flex;
+      gap: 20px;
+    }
+    .gender label {
+      display: inline;
+      margin-top: 0;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #1d3e81;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .note {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
 
-  <h2>ලියාපදිංචි වීමේ පෝරමය | Registration Form</h2>
+<div class="container">
+  <h2>Capital Lanka Loan Application</h2>
 
-  <form id="registrationForm">
-    <!-- Personal Details -->
-    <label>මුල් නම | First Name:
-      <input type="text" name="first_name" required>
-    </label>
-    <label>අවසන් නම | Last Name:
-      <input type="text" name="last_name" required>
-    </label>
-    <label>උපන්දිනය | Date of Birth:
-      <input type="date" name="dob" required>
-    </label>
-    <label>ජා.හැ.අංකය | NIC Number:
-      <input type="text" name="nic" required>
-    </label>
-    <label>විවාහක තත්වය | Marital Status:
-      <select name="marital_status" required>
-        <option value="">තෝරන්න | Select</option>
-        <option value="විවාහක">විවාහක | Married</option>
-        <option value="අවිවාහක">අවිවාහක | Unmarried</option>
-      </select>
-    </label>
+  <label>First Name (in English)</label>
+  <input type="text" name="first_name" required>
 
-    <!-- Guarantors -->
-    <label>ඇපකරු 1 නම | Guarantor 1 Name:
-      <input type="text" name="guarantor1_name" required>
-    </label>
-    <label>ඇපකරු 1 දුරකථනය | Guarantor 1 Phone:
-      <input type="text" name="guarantor1_phone" required>
-    </label>
-    <label>ඇපකරු 2 නම | Guarantor 2 Name:
-      <input type="text" name="guarantor2_name" required>
-    </label>
-    <label>ඇපකරු 2 දුරකථනය | Guarantor 2 Phone:
-      <input type="text" name="guarantor2_phone" required>
-    </label>
+  <label>Last Name (in English)</label>
+  <input type="text" name="last_name" required>
 
-    <!-- Bank Info -->
-    <label>ගිණුම් හිමියාගේ නම | Account Holder Name:
-      <input type="text" name="account_holder" required>
-    </label>
-    <label>ගිණුම් අංකය | Account Number:
-      <input type="text" name="account_number" required>
-    </label>
-    <label>බැංකුව | Bank:
-      <input type="text" name="bank" required>
-    </label>
-    <label>ශාඛාව | Branch:
-      <input type="text" name="branch" required>
-    </label>
+  <label>Personal ID (NIC Number)</label>
+  <input type="text" name="nic" required>
 
-    <button type="button" onclick="submitForm()">යවන්න | Submit</button>
-  </form>
+  <label>Gender</label>
+  <div class="gender">
+    <label><input type="radio" name="gender" value="male"> Male</label>
+    <label><input type="radio" name="gender" value="female"> Female</label>
+  </div>
 
-  <script>
-    function submitForm() {
-      const form = document.getElementById("registrationForm");
-      const formData = {
-        first_name: form.first_name.value,
-        last_name: form.last_name.value,
-        dob: form.dob.value,
-        nic: form.nic.value,
-        marital_status: form.marital_status.value,
-        guarantor1_name: form.guarantor1_name.value,
-        guarantor1_phone: form.guarantor1_phone.value,
-        guarantor2_name: form.guarantor2_name.value,
-        guarantor2_phone: form.guarantor2_phone.value,
-        account_holder: form.account_holder.value,
-        account_number: form.account_number.value,
-        bank: form.bank.value,
-        branch: form.branch.value
-      };
+  <label>Birthday Date (YYYY.MM.DD)</label>
+  <input type="text" name="birthday" placeholder="YYYY.MM.DD" required>
 
-      fetch("https://script.google.com/macros/s/AKfycbwEe8dBcGeLLCn6ltCEiah_SFiuRgo4PZrCEsBsfNZoNPoc2tjz9pabSOts2SJVzzC7tw/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => res.text())
-      .then(data => {
-        alert("යැවීම සාර්ථකයි | Submission Successful: " + data);
-        form.reset();
-      })
-      .catch(err => {
-        console.error("Submit Error:", err);
-        alert("යැවීම අසාර්ථකයි | Submission Failed");
-      });
-    }
-  </script>
+  <hr>
+
+  <label>Guarantor 1 Name</label>
+  <input type="text" name="guarantor1_name" required>
+
+  <label>Guarantor 1 Phone Number</label>
+  <input type="text" name="guarantor1_phone" required>
+
+  <label>Guarantor 2 Name</label>
+  <input type="text" name="guarantor2_name" required>
+
+  <label>Guarantor 2 Phone Number</label>
+  <input type="text" name="guarantor2_phone" required>
+
+  <label>Upload ID Photo (Front)</label>
+  <input type="file" name="id_front" accept="image/*" required>
+
+  <label>Upload ID Photo (Back)</label>
+  <input type="file" name="id_back" accept="image/*" required>
+
+  <hr>
+
+  <label>Account Holder's Name</label>
+  <input type="text" name="acc_name" required>
+
+  <label>Bank Account Number</label>
+  <input type="text" name="acc_number" required>
+
+  <label>Bank Name</label>
+  <input type="text" name="bank_name" required>
+
+  <label>Branch</label>
+  <input type="text" name="branch" required>
+
+  <button type="submit">Submit Application</button>
+
+  <div class="note">
+    Call us: 0723979783 | Company: Capital Lanka
+  </div>
+</div>
 
 </body>
 </html>
