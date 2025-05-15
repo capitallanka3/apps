@@ -2,68 +2,57 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-  <meta charset="UTF-8">
-  <title>ලියාපදිංචි වීම</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Google Sheet Form</title>
   <style>
     body {
-      font-family: "Noto Sans Sinhala", sans-serif;
-      margin: 20px;
-      background-color: #f9f9f9;
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f2f2f2;
     }
     form {
-      background: #fff;
+      background-color: #fff;
       padding: 20px;
       border-radius: 8px;
       max-width: 400px;
       margin: auto;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
     input, select {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 16px;
     }
     button {
-      background-color: #00c9a7;
+      background-color: #00b894;
       color: white;
       padding: 10px;
       border: none;
-      margin-top: 20px;
-      width: 100%;
       font-size: 16px;
-      border-radius: 5px;
       cursor: pointer;
-    }
-    button:hover {
-      background-color: #00b098;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <form id="registrationForm">
-    <h2>පෝරමය</h2>
+  <form id="dataForm">
     <label>මුල් නම</label>
-    <input type="text" name="firstName" required>
+    <input type="text" name="firstName" required />
 
     <label>අවසන් නම</label>
-    <input type="text" name="lastName" required>
+    <input type="text" name="lastName" required />
 
     <label>උපන්දිනය</label>
-    <input type="date" name="dob" required>
+    <input type="date" name="dob" required />
 
     <label>හැඳුනුම්පත් අංකය</label>
-    <input type="text" name="nic" required>
+    <input type="text" name="nic" required />
 
-    <label>විවාහක / අවිවාහක තත්වය</label>
+    <label>විවාහක/අවිවාහක තත්වය</label>
     <select name="status" required>
-      <option value="">-- තෝරන්න --</option>
+      <option value="">තෝරන්න</option>
       <option value="විවාහක">විවාහක</option>
       <option value="අවිවාහක">අවිවාහක</option>
     </select>
@@ -72,22 +61,20 @@
   </form>
 
   <script>
-    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+    document.getElementById('dataForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
-      const jsonData = {};
-      formData.forEach((value, key) => jsonData[key] = value);
+      const formData = new FormData(e.target);
+      const data = {};
+      formData.forEach((value, key) => (data[key] = value));
 
       fetch("https://script.google.com/macros/s/AKfycbyvsfl42FoXGcku1MNP5UJdEl42RqHJ48Che8kV91L3XMx2jVTVvelXjYA-yZYbtyjn4Q/exec", {
         method: "POST",
-        body: JSON.stringify(jsonData),
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
       })
-      .then(response => response.text())
-      .then(data => alert("සාර්ථකව යවා ඇත: " + data))
-      .catch(error => alert("දෝෂයක්: " + error));
+      .then(res => res.text())
+      .then(res => alert("සාර්ථකව යවා ඇත!"))
+      .catch(err => alert("දෝෂයක්: " + err));
     });
   </script>
 </body>
