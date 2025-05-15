@@ -1,52 +1,94 @@
+
 <!DOCTYPE html>
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>පොදුගලික තොරතුරු</title>
-  <link rel="stylesheet" href="style.css">
+  <title>ලියාපදිංචි වීම</title>
+  <style>
+    body {
+      font-family: "Noto Sans Sinhala", sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #00c9a7;
+      color: white;
+      padding: 10px;
+      border: none;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00b098;
+    }
+  </style>
 </head>
 <body>
+  <form id="registrationForm">
+    <h2>පෝරමය</h2>
+    <label>මුල් නම</label>
+    <input type="text" name="firstName" required>
 
-  <div class="form-container">
-    <h2>පොදුගලික තොරතුරු</h2>
+    <label>අවසන් නම</label>
+    <input type="text" name="lastName" required>
 
-    <div class="progress-bar">
-      <p>ලියාපදිංචිය <strong>25%</strong> සම්පූර්ණයි</p>
-      <div class="steps">
-        <div class="step active">1</div>
-        <div class="step">2</div>
-        <div class="step">3</div>
-        <div class="step">4</div>
-      </div>
-    </div>
+    <label>උපන්දිනය</label>
+    <input type="date" name="dob" required>
 
-    <form>
-      <label for="firstName">මුල් නම</label>
-      <input type="text" id="firstName" name="firstName" placeholder="ඔබේ මුල් නම ඇතුළත් කරන්න">
+    <label>හැඳුනුම්පත් අංකය</label>
+    <input type="text" name="nic" required>
 
-      <label for="lastName">අවසන් නම</label>
-      <input type="text" id="lastName" name="lastName" placeholder="ඔබේ අවසන් නම ඇතුළත් කරන්න">
+    <label>විවාහක / අවිවාහක තත්වය</label>
+    <select name="status" required>
+      <option value="">-- තෝරන්න --</option>
+      <option value="විවාහක">විවාහක</option>
+      <option value="අවිවාහක">අවිවාහක</option>
+    </select>
 
-      <label for="dob">උපන්දිනය*</label>
-      <div class="input-icon">
-        <input type="date" id="dob" name="dob" required>
-        <span class="icon">📅</span>
-      </div>
+    <button type="submit">යවන්න</button>
+  </form>
 
-      <label for="nic">ජාතික හැඳුනුම්පත් අංකය*</label>
-      <input type="text" id="nic" name="nic" placeholder="ඔබේ හැඳුනුම්පත් අංකය ඇතුළත් කරන්න" required>
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const jsonData = {};
+      formData.forEach((value, key) => jsonData[key] = value);
 
-      <label for="status">විවාහක / අවිවාහක තත්ත්වය*</label>
-      <select id="status" name="status" required>
-        <option value="">-- තෝරන්න --</option>
-        <option value="single">අවිවාහක</option>
-        <option value="married">විවාහක</option>
-      </select>
-
-      <button type="submit" class="submit-btn" disabled>මීළඟ</button>
-    </form>
-  </div>
-
+      fetch("https://script.google.com/macros/s/AKfycbyvsfl42FoXGcku1MNP5UJdEl42RqHJ48Che8kV91L3XMx2jVTVvelXjYA-yZYbtyjn4Q/exec", {
+        method: "POST",
+        body: JSON.stringify(jsonData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => response.text())
+      .then(data => alert("සාර්ථකව යවා ඇත: " + data))
+      .catch(error => alert("දෝෂයක්: " + error));
+    });
+  </script>
 </body>
 </html>
