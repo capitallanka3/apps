@@ -2,179 +2,108 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <title>පොදුගලික තොරතුරු</title>
+  <title>පොදුගලික තොරතුරු</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
-    }
-    .form-container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .step-indicator {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    .step-indicator div {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #ccc;
-      color: white;
-      text-align: center;
-      line-height: 30px;
-    }
-    .step-indicator .active {
-      background: #00b894;
-    }
-    .step {
-      display: none;
-    }
-    .step.active {
-      display: block;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .buttons {
-      margin-top: 20px;
-      text-align: right;
-    }
-    button {
-      background: #00b894;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      margin-left: 10px;
-    }
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 10px; }
+    input, select { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 20px; padding: 10px 20px; }
   </style>
 </head>
 <body>
 
-<div class="form-container">
-  <div class="step-indicator">
-    <div class="active">1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-  </div>
+  <h2>ලියාපදිංචි වීමේ පෝරමය</h2>
 
-  <!-- Step 1 -->
-  <div class="step active" id="step1">
-    <label>මුල් නම</label>
-    <input type="text" name="first_name">
+  <form id="registrationForm">
+    <!-- Step 1 -->
+    <label>මුල් නම:
+      <input type="text" name="first_name" required>
+    </label>
+    <label>මුල් නම (අවසාන් නම):
+      <input type="text" name="last_name" required>
+    </label>
+    <label>උපන්දිනය:
+      <input type="date" name="dob" required>
+    </label>
+    <label>ජා.හැ.අංකය:
+      <input type="text" name="nic" required>
+    </label>
+    <label>විවාහක/අවිවාහක තත්වය:
+      <select name="marital_status" required>
+        <option value="">තෝරන්න</option>
+        <option value="විවාහක">විවාහක</option>
+        <option value="අවිවාහක">අවිවාහක</option>
+      </select>
+    </label>
 
-    <label>අවසන් නම</label>
-    <input type="text" name="last_name">
+    <!-- Step 2 -->
+    <label>ඇපකරු 1 නම:
+      <input type="text" name="guarantor1_name" required>
+    </label>
+    <label>ඇපකරු 1 දුරකථනය:
+      <input type="text" name="guarantor1_phone" required>
+    </label>
+    <label>ඇපකරු 2 නම:
+      <input type="text" name="guarantor2_name" required>
+    </label>
+    <label>ඇපකරු 2 දුරකථනය:
+      <input type="text" name="guarantor2_phone" required>
+    </label>
 
-    <label>උපන්දිනය</label>
-    <input type="date" name="dob">
+    <!-- Step 4 -->
+    <label>ගිණුම් හිමියාගේ නම:
+      <input type="text" name="account_holder" required>
+    </label>
+    <label>ගිණුම් අංකය:
+      <input type="text" name="account_number" required>
+    </label>
+    <label>බැංකුව:
+      <input type="text" name="bank" required>
+    </label>
+    <label>ශාඛාව:
+      <input type="text" name="branch" required>
+    </label>
 
-    <label>ජාතික හැඳුනුම්පත් අංකය</label>
-    <input type="text" name="nic">
+    <button type="button" onclick="submitForm()">යවන්න</button>
+  </form>
 
-    <label>විවාහක / අවිවාහක තත්ත්වය</label>
-    <select name="marital_status">
-      <option value="single">අවිවාහක</option>
-      <option value="married">විවාහක</option>
-    </select>
-  </div>
+  <script>
+    function submitForm() {
+      const form = document.getElementById("registrationForm");
+      const formData = {
+        first_name: form.first_name.value,
+        last_name: form.last_name.value,
+        dob: form.dob.value,
+        nic: form.nic.value,
+        marital_status: form.marital_status.value,
+        guarantor1_name: form.guarantor1_name.value,
+        guarantor1_phone: form.guarantor1_phone.value,
+        guarantor2_name: form.guarantor2_name.value,
+        guarantor2_phone: form.guarantor2_phone.value,
+        account_holder: form.account_holder.value,
+        account_number: form.account_number.value,
+        bank: form.bank.value,
+        branch: form.branch.value
+      };
 
-  <!-- Step 2 -->
-  <div class="step" id="step2">
-    <label>ඇපකරු 1 නම</label>
-    <input type="text" name="guarantor1_name">
-
-    <label>ඇපකරු 1 දුරකථන අංකය</label>
-    <input type="text" name="guarantor1_phone">
-
-    <label>ඇපකරු 2 නම</label>
-    <input type="text" name="guarantor2_name">
-
-    <label>ඇපකරු 2 දුරකථන අංකය</label>
-    <input type="text" name="guarantor2_phone">
-  </div>
-
-  <!-- Step 3 -->
-  <div class="step" id="step3">
-    <label>ජාතික හැඳුනුම්පත (ඉදිරිපස)</label>
-    <input type="file" name="nic_front">
-
-    <label>ජාතික හැඳුනුම්පත (පිටුපස)</label>
-    <input type="file" name="nic_back">
-
-    <label>සෙල්ෆි (ඔබ සමඟ හැඳුනුම්පතත්)</label>
-    <input type="file" name="selfie">
-  </div>
-
-  <!-- Step 4 -->
-  <div class="step" id="step4">
-    <label>ගිණුම් හිමියාගේ සම්පූර්ණ නම</label>
-    <input type="text" name="account_holder">
-
-    <label>ගිණුම් අංකය</label>
-    <input type="text" name="account_number">
-
-    <label>බැංකුව</label>
-    <input type="text" name="bank">
-
-    <label>ශාඛාව</label>
-    <input type="text" name="branch">
-  </div>
-
-  <div class="buttons">
-    <button type="button" onclick="prevStep()">පසුගිය</button>
-    <button type="button" onclick="nextStep()">මීළඟ</button>
-  </div>
-</div>
-
-<script>
-  let currentStep = 1;
-  const totalSteps = 4;
-
-  function showStep(step) {
-    document.querySelectorAll(".step").forEach((el, index) => {
-      el.classList.remove("active");
-      if (index === step - 1) el.classList.add("active");
-    });
-
-    document.querySelectorAll(".step-indicator div").forEach((el, index) => {
-      el.classList.remove("active");
-      if (index === step - 1) el.classList.add("active");
-    });
-  }
-
-  function nextStep() {
-    if (currentStep < totalSteps) {
-      currentStep++;
-      showStep(currentStep);
+      fetch("https://script.google.com/macros/s/AKfycbxp2_PdHq1w6j5AEen77e8Qn-W-etWWo6yx1QimVV6uCAzTTHvyCgQd8AJVLEXhA5da/exec", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.text())
+      .then(data => {
+        alert("යැවීම සාර්ථකයි: " + data);
+        form.reset(); // clear form
+      })
+      .catch(err => {
+        console.error("Submit Error:", err);
+        alert("යැවීම අසාර්ථකයි");
+      });
     }
-  }
-
-  function prevStep() {
-    if (currentStep > 1) {
-      currentStep--;
-      showStep(currentStep);
-    }
-  }
-</script>
+  </script>
 
 </body>
 </html>
