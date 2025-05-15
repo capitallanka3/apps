@@ -98,9 +98,9 @@
         form.reset();
       })
       .catch(err => {
-        console.error("Submit Error:", err);
-        alert("❌ Submit Failed / යැවීම අසාර්ථකයි");
-      });
+  console.error("Submit Error:", err.message);
+  alert("යැවීම අසාර්ථකයි");
+});
     }
   </script>
 
