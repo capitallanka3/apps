@@ -87,7 +87,7 @@
         branch: form.branch.value
       };
 
-      fetch('https://script.google.com/macros/s/AKfycbwEe8dBcGeLLCn6ltCEiah_SFiuRgo4PZrCEsBsfNZoNPoc2tjz9pabSOts2SJVzzC7tw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwEe8dBcGeLLCn6ltCEiah_SFiuRgo4PZrCEsBsfNZoNPoc2tjz9pabSOts2SJVzzC7tw/exec", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -96,12 +96,12 @@
       })
       .then(res => res.text())
       .then(data => {
-        alert("යැවීම සාර්ථකයි: " + data);
+        alert("යැවීම සාර්ථකයි | Submission Successful: " + data);
         form.reset();
       })
       .catch(err => {
         console.error("Submit Error:", err);
-        alert("යැවීම අසාර්ථකයි");
+        alert("යැවීම අසාර්ථකයි | Submission Failed");
       });
     }
   </script>
