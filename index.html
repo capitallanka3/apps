@@ -2,68 +2,70 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <title>Registration Form / ලියාපදිංචි පෝරමය</title>
+  <title>ලියාපදිංචි වීමේ පෝරමය</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    label { display: block; margin-top: 12px; }
+    body { font-family: sans-serif; padding: 20px; background: #f8f8f8; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
     input, select { width: 100%; padding: 8px; margin-top: 5px; }
-    button { margin-top: 20px; padding: 10px 20px; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    h2 { text-align: center; }
   </style>
 </head>
 <body>
 
-  <h2>Registration Form / ලියාපදිංචි පෝරමය</h2>
+  <h2>ලියාපදිංචි වීමේ පෝරමය | Registration Form</h2>
 
   <form id="registrationForm">
-    <label>First Name / මුල් නම:
+    <!-- Personal Details -->
+    <label>මුල් නම | First Name:
       <input type="text" name="first_name" required>
     </label>
-    <label>Last Name / අවසාන් නම:
+    <label>අවසන් නම | Last Name:
       <input type="text" name="last_name" required>
     </label>
-    <label>Date of Birth / උපන්දිනය:
+    <label>උපන්දිනය | Date of Birth:
       <input type="date" name="dob" required>
     </label>
-    <label>NIC Number / ජා.හැ. අංකය:
+    <label>ජා.හැ.අංකය | NIC Number:
       <input type="text" name="nic" required>
     </label>
-    <label>Marital Status / විවාහක/අවිවාහක තත්වය:
+    <label>විවාහක තත්වය | Marital Status:
       <select name="marital_status" required>
-        <option value="">Select / තෝරන්න</option>
-        <option value="Married / විවාහක">Married / විවාහක</option>
-        <option value="Unmarried / අවිවාහක">Unmarried / අවිවාහක</option>
+        <option value="">තෝරන්න | Select</option>
+        <option value="විවාහක">විවාහක | Married</option>
+        <option value="අවිවාහක">අවිවාහක | Unmarried</option>
       </select>
     </label>
 
     <!-- Guarantors -->
-    <label>Guarantor 1 Name / ඇපකරු 1 නම:
+    <label>ඇපකරු 1 නම | Guarantor 1 Name:
       <input type="text" name="guarantor1_name" required>
     </label>
-    <label>Guarantor 1 Phone / දුරකථනය:
+    <label>ඇපකරු 1 දුරකථනය | Guarantor 1 Phone:
       <input type="text" name="guarantor1_phone" required>
     </label>
-    <label>Guarantor 2 Name / ඇපකරු 2 නම:
+    <label>ඇපකරු 2 නම | Guarantor 2 Name:
       <input type="text" name="guarantor2_name" required>
     </label>
-    <label>Guarantor 2 Phone / දුරකථනය:
+    <label>ඇපකරු 2 දුරකථනය | Guarantor 2 Phone:
       <input type="text" name="guarantor2_phone" required>
     </label>
 
     <!-- Bank Info -->
-    <label>Account Holder Name / ගිණුම් හිමියාගේ නම:
+    <label>ගිණුම් හිමියාගේ නම | Account Holder Name:
       <input type="text" name="account_holder" required>
     </label>
-    <label>Account Number / ගිණුම් අංකය:
+    <label>ගිණුම් අංකය | Account Number:
       <input type="text" name="account_number" required>
     </label>
-    <label>Bank / බැංකුව:
+    <label>බැංකුව | Bank:
       <input type="text" name="bank" required>
     </label>
-    <label>Branch / ශාඛාව:
+    <label>ශාඛාව | Branch:
       <input type="text" name="branch" required>
     </label>
 
-    <button type="button" onclick="submitForm()">Submit / යවන්න</button>
+    <button type="button" onclick="submitForm()">යවන්න | Submit</button>
   </form>
 
   <script>
@@ -85,7 +87,7 @@
         branch: form.branch.value
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbw35oJ6oHjYFOvuFLYbdjNYcs_yXErKGLM6-LkpAHbYOAW93jLOQJ3t-1oxkRtsB2EJ/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbyBShU5ew7s4WHAy10jXsBE0w3akW3_2191BQlx2fcuKQd8bzzTeZcYCHoUYBcKcHNX/exec", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -94,13 +96,13 @@
       })
       .then(res => res.text())
       .then(data => {
-        alert("✔ Submit Success / යැවීම සාර්ථකයි: " + data);
+        alert("යැවීම සාර්ථකයි: " + data);
         form.reset();
       })
       .catch(err => {
-  console.error("Submit Error:", err.message);
-  alert("යැවීම අසාර්ථකයි");
-});
+        console.error("Submit Error:", err);
+        alert("යැවීම අසාර්ථකයි");
+      });
     }
   </script>
 
