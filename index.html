@@ -115,20 +115,32 @@
   </div>
 
   <script>
-    const form = document.getElementById('loanForm');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
+    <form id="loanForm">
+  <input type="text" name="first_name" required>
+  <button type="submit">Submit</button>
+</form>
 
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyI9VaNjIUQWvhrjJOczVOpe9OSkgHqxpOUJsk6CFyAqE4-dh3EpP9LWpCtYoJUF2He/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
+<script>
+  const form = document.getElementById('loanForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbyI9VaNjIUQWvhrjJOczVOpe9OSkgHqxpOUJsk6CFyAqE4-dh3EpP9LWpCtYoJUF2He/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
-
+      const result = await res.text();
+      alert("Submitted: " + result);
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting form");
+    }
+  });
+    
+</script>
       if (response.ok) {
         alert("Form submitted successfully!");
         form.reset();
