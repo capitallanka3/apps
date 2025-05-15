@@ -2,79 +2,86 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Google Sheet Form</title>
+  <meta charset="UTF-8">
+  <title>ලියාපදිංචි පෝරමය</title>
   <style>
     body {
       font-family: sans-serif;
-      padding: 20px;
-      background-color: #f2f2f2;
+      margin: 30px;
+      background: #f5f5f5;
     }
     form {
-      background-color: #fff;
+      background: white;
       padding: 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
     }
-    input, select {
+    input, select, button {
+      display: block;
+      margin: 10px 0;
       width: 100%;
-      margin-bottom: 10px;
       padding: 10px;
       font-size: 16px;
     }
     button {
-      background-color: #00b894;
+      background-color: #00c4a7;
       color: white;
-      padding: 10px;
       border: none;
-      font-size: 16px;
       cursor: pointer;
-      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <form id="dataForm">
-    <label>මුල් නම</label>
-    <input type="text" name="firstName" required />
-
-    <label>අවසන් නම</label>
-    <input type="text" name="lastName" required />
-
-    <label>උපන්දිනය</label>
-    <input type="date" name="dob" required />
-
-    <label>හැඳුනුම්පත් අංකය</label>
-    <input type="text" name="nic" required />
-
-    <label>විවාහක/අවිවාහක තත්වය</label>
+  <h2>ලියාපදිංචි පෝරමය</h2>
+  <form id="registrationForm">
+    <label>මුල් නම:</label>
+    <input type="text" name="firstName" required>
+    
+    <label>අවසන් නම:</label>
+    <input type="text" name="lastName" required>
+    
+    <label>උපන්දිනය:</label>
+    <input type="date" name="dob" required>
+    
+    <label>හැඳුනුම්පත් අංකය:</label>
+    <input type="text" name="nic" required>
+    
+    <label>විවාහක / අවිවාහක තත්ත්වය:</label>
     <select name="status" required>
       <option value="">තෝරන්න</option>
       <option value="විවාහක">විවාහක</option>
       <option value="අවිවාහක">අවිවාහක</option>
     </select>
 
-    <button type="submit">යවන්න</button>
+    <button type="submit">මාරු කරන්න</button>
   </form>
 
   <script>
-    document.getElementById('dataForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const data = {};
-      formData.forEach((value, key) => (data[key] = value));
+    const form = document.getElementById("registrationForm");
 
-      fetch("https://script.google.com/macros/s/AKfycbyvsfl42FoXGcku1MNP5UJdEl42RqHJ48Che8kV91L3XMx2jVTVvelXjYA-yZYbtyjn4Q/exec", {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        dob: form.dob.value,
+        nic: form.nic.value,
+        status: form.status.value
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycby2GG87iZXV-HZBpdfxycbSkPN8ESSGmwrYWq0i5V04rOyaqhosKqHT6nKYxiElJCp3uw/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(res => res.text())
-      .then(res => alert("සාර්ථකව යවා ඇත!"))
-      .catch(err => alert("දෝෂයක්: " + err));
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      }).then(() => {
+        alert("දත්ත යවා ඇත!");
+        form.reset();
+      }).catch((error) => {
+        alert("දෝෂයක්: " + error.message);
+      });
     });
   </script>
 </body>
