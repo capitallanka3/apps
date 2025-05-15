@@ -68,12 +68,11 @@
       const data = Object.fromEntries(formData.entries());
 
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbxcBsJIqft7m6aI3Ik4brwfylsV03_GozDXJw7S67z18xR_nnwrN3A26eHRv8JIeKzU/exec", {
-           method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  });
-
+       const response = await fetch("https://script.google.com/macros/s/AKfycbw788C5v9ySyQofXA3VsoyD29prK73yaCGfAlv9hknPYmcgWjBKOG10sXWeZ5hsCXCvAA/exec", {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: { "Content-Type": "application/json" }
+});
   const result = await response.text();
   console.log("Response:", result); // ← මේක දාන්න
   document.getElementById('result').innerText = "✅ Submitted successfully!";
