@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>පොදුගලික තොරතුරු</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .step-indicator div {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #ccc;
+      color: white;
+      text-align: center;
+      line-height: 30px;
+    }
+    .step-indicator .active {
+      background: #00b894;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .buttons {
+      margin-top: 20px;
+      text-align: right;
+    }
+    button {
+      background: #00b894;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <div class="step-indicator">
+    <div class="active">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step active" id="step1">
+    <label>මුල් නම</label>
+    <input type="text" name="first_name">
+
+    <label>අවසන් නම</label>
+    <input type="text" name="last_name">
+
+    <label>උපන්දිනය</label>
+    <input type="date" name="dob">
+
+    <label>ජාතික හැඳුනුම්පත් අංකය</label>
+    <input type="text" name="nic">
+
+    <label>විවාහක / අවිවාහක තත්ත්වය</label>
+    <select name="marital_status">
+      <option value="single">අවිවාහක</option>
+      <option value="married">විවාහක</option>
+    </select>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step" id="step2">
+    <label>ඇපකරු 1 නම</label>
+    <input type="text" name="guarantor1_name">
+
+    <label>ඇපකරු 1 දුරකථන අංකය</label>
+    <input type="text" name="guarantor1_phone">
+
+    <label>ඇපකරු 2 නම</label>
+    <input type="text" name="guarantor2_name">
+
+    <label>ඇපකරු 2 දුරකථන අංකය</label>
+    <input type="text" name="guarantor2_phone">
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step" id="step3">
+    <label>ජාතික හැඳුනුම්පත (ඉදිරිපස)</label>
+    <input type="file" name="nic_front">
+
+    <label>ජාතික හැඳුනුම්පත (පිටුපස)</label>
+    <input type="file" name="nic_back">
+
+    <label>සෙල්ෆි (ඔබ සමඟ හැඳුනුම්පතත්)</label>
+    <input type="file" name="selfie">
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step" id="step4">
+    <label>ගිණුම් හිමියාගේ සම්පූර්ණ නම</label>
+    <input type="text" name="account_holder">
+
+    <label>ගිණුම් අංකය</label>
+    <input type="text" name="account_number">
+
+    <label>බැංකුව</label>
+    <input type="text" name="bank">
+
+    <label>ශාඛාව</label>
+    <input type="text" name="branch">
+  </div>
+
+  <div class="buttons">
+    <button type="button" onclick="prevStep()">පසුගිය</button>
+    <button type="button" onclick="nextStep()">මීළඟ</button>
+  </div>
+</div>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 4;
+
+  function showStep(step) {
+    document.querySelectorAll(".step").forEach((el, index) => {
+      el.classList.remove("active");
+      if (index === step - 1) el.classList.add("active");
+    });
+
+    document.querySelectorAll(".step-indicator div").forEach((el, index) => {
+      el.classList.remove("active");
+      if (index === step - 1) el.classList.add("active");
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+</script>
+
+</body>
+</html>
