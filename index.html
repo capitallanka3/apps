@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>බඳවාගැනීමේ පෝරමය</title>
+</head>
+<body>
+  <form id="myForm">
+    <!-- පියවර 1 -->
+    <h3>පියවර 1: පුද්ගලික විස්තර</h3>
+    <label>මුල් නම:</label><input type="text" name="firstName" required><br>
+    <label>අවසන් නම:</label><input type="text" name="lastName" required><br>
+    <label>උපන් දිනය:</label><input type="date" name="dob" required><br>
+    <label>හැඳුනුම්පත් අංකය:</label><input type="text" name="nic" required><br>
+    <label>විවෘත තත්ත්වය:</label>
+    <select name="status">
+      <option>විවාහක</option>
+      <option>අවිවාහක</option>
+    </select><br><br>
+
+    <!-- පියවර 2 -->
+    <h3>පියවර 2: ඇපකරුවන්</h3>
+    <label>1 වන ඇපකරුගේ නම:</label><input type="text" name="guarantor1_name" required><br>
+    <label>1 වන ඇපකරුගේ දුරකථන අංකය:</label><input type="text" name="guarantor1_phone" required><br>
+    <label>2 වන ඇපකරුගේ නම:</label><input type="text" name="guarantor2_name" required><br>
+    <label>2 වන ඇපකරුගේ දුරකථන අංකය:</label><input type="text" name="guarantor2_phone" required><br><br>
+
+    <!-- පියවර 3 -->
+    <h3>පියවර 3: ID Upload</h3>
+    <label>ජා.හැ.පත ඉදිරිපස:</label><input type="file" name="file1" required><br>
+    <label>ජා.හැ.පත පිටුපස:</label><input type="file" name="file2" required><br>
+    <label>Selfie:</label><input type="file" name="file3" required><br><br>
+
+    <!-- පියවර 4 -->
+    <h3>පියවර 4: ගිණුම් විස්තර</h3>
+    <label>ගිණුම් හිමියාගේ නම:</label><input type="text" name="accountHolder" required><br>
+    <label>ගිණුම් අංකය:</label><input type="text" name="accountNumber" required><br>
+    <label>බැංකුව:</label><input type="text" name="bank" required><br>
+    <label>ශාඛාව:</label><input type="text" name="branch" required><br><br>
+
+    <button type="submit">යවන්න</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => alert("සාර්ථකයි: " + data))
+      .catch(err => alert("දෝෂයක්: " + err));
+    });
+  </script>
+</body>
+</html>
