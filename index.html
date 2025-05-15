@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>පොදුගලික තොරතුරු</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>පොදුගලික තොරතුරු</h2>
+
+    <div class="progress-bar">
+      <p>ලියාපදිංචිය <strong>25%</strong> සම්පූර්ණයි</p>
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+      </div>
+    </div>
+
+    <form>
+      <label for="firstName">මුල් නම</label>
+      <input type="text" id="firstName" name="firstName" placeholder="ඔබේ මුල් නම ඇතුළත් කරන්න">
+
+      <label for="lastName">අවසන් නම</label>
+      <input type="text" id="lastName" name="lastName" placeholder="ඔබේ අවසන් නම ඇතුළත් කරන්න">
+
+      <label for="dob">උපන්දිනය*</label>
+      <div class="input-icon">
+        <input type="date" id="dob" name="dob" required>
+        <span class="icon">📅</span>
+      </div>
+
+      <label for="nic">ජාතික හැඳුනුම්පත් අංකය*</label>
+      <input type="text" id="nic" name="nic" placeholder="ඔබේ හැඳුනුම්පත් අංකය ඇතුළත් කරන්න" required>
+
+      <label for="status">විවාහක / අවිවාහක තත්ත්වය*</label>
+      <select id="status" name="status" required>
+        <option value="">-- තෝරන්න --</option>
+        <option value="single">අවිවාහක</option>
+        <option value="married">විවාහක</option>
+      </select>
+
+      <button type="submit" class="submit-btn" disabled>මීළඟ</button>
+    </form>
+  </div>
+
+</body>
+</html>
