@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f9ff;
+      margin: 0;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+    .gender {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .gender label {
+      font-weight: normal;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #1946d9;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #153bb8;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Personal Data</h2>
+    <form id="loanForm">
+      <label>First Name (in English)</label>
+      <input type="text" name="first_name" required>
+
+      <label>Last Name (in English)</label>
+      <input type="text" name="last_name" required>
+
+      <label>Personal ID (NIC Number)</label>
+      <input type="text" name="nic" required>
+
+      <label>Gender</label>
+      <div class="gender">
+        <label><input type="radio" name="gender" value="male"> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+      </div>
+
+      <label>Birthday Date (YYYY.MM.DD)</label>
+      <input type="date" name="dob" required>
+
+      <hr style="margin: 20px 0;">
+
+      <h2>Additional Information</h2>
+
+      <label>Guarantor 1 Name</label>
+      <input type="text" name="guarantor1_name">
+
+      <label>Guarantor 1 Phone</label>
+      <input type="tel" name="guarantor1_phone">
+
+      <label>Guarantor 2 Name</label>
+      <input type="text" name="guarantor2_name">
+
+      <label>Guarantor 2 Phone</label>
+      <input type="tel" name="guarantor2_phone">
+
+      <label>Account Holder Name</label>
+      <input type="text" name="account_name">
+
+      <label>Account Number</label>
+      <input type="text" name="account_number">
+
+      <label>Bank Name</label>
+      <input type="text" name="bank_name">
+
+      <label>Branch</label>
+      <input type="text" name="branch">
+
+      <button type="submit">Continue</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loanForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyI9VaNjIUQWvhrjJOczVOpe9OSkgHqxpOUJsk6CFyAqE4-dh3EpP9LWpCtYoJUF2He/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        alert("Form submitted successfully!");
+        form.reset();
+      } else {
+        alert("Submission failed.");
+      }
+    });
+  </script>
+</body>
+</html>
