@@ -1,153 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loan Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paying Made Easy</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f6f9ff;
+      background: #f8f8f8;
       margin: 0;
-      padding: 20px;
-    }
-    .form-container {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
+      padding: 0;
       text-align: center;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 24px;
       margin-bottom: 20px;
     }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-      font-weight: bold;
-    }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-    }
-    .gender {
+
+    .cards {
       display: flex;
-      gap: 15px;
-      margin-bottom: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      transform: rotate(45deg);
     }
-    .gender label {
-      font-weight: normal;
+
+    .card {
+      width: 100px;
+      height: 60px;
+      border-radius: 15px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     }
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #1946d9;
+
+    .card img {
+      width: 80%;
+      height: auto;
+      transform: rotate(-45deg);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #00c853;
       color: white;
+      font-weight: bold;
       border: none;
       border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 15px;
     }
-    button:hover {
-      background: #153bb8;
+
+    .footer {
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Personal Data</h2>
-    <form id="loanForm">
-      <label>First Name (in English)</label>
-      <input type="text" name="first_name" required>
 
-      <label>Last Name (in English)</label>
-      <input type="text" name="last_name" required>
-
-      <label>Personal ID (NIC Number)</label>
-      <input type="text" name="nic" required>
-
-      <label>Gender</label>
-      <div class="gender">
-        <label><input type="radio" name="gender" value="male"> Male</label>
-        <label><input type="radio" name="gender" value="female"> Female</label>
-      </div>
-
-      <label>Birthday Date (YYYY.MM.DD)</label>
-      <input type="date" name="dob" required>
-
-      <hr style="margin: 20px 0;">
-
-      <h2>Additional Information</h2>
-
-      <label>Guarantor 1 Name</label>
-      <input type="text" name="guarantor1_name">
-
-      <label>Guarantor 1 Phone</label>
-      <input type="tel" name="guarantor1_phone">
-
-      <label>Guarantor 2 Name</label>
-      <input type="text" name="guarantor2_name">
-
-      <label>Guarantor 2 Phone</label>
-      <input type="tel" name="guarantor2_phone">
-
-      <label>Account Holder Name</label>
-      <input type="text" name="account_name">
-
-      <label>Account Number</label>
-      <input type="text" name="account_number">
-
-      <label>Bank Name</label>
-      <input type="text" name="bank_name">
-
-      <label>Branch</label>
-      <input type="text" name="branch">
-
-      <button type="submit">Continue</button>
-    </form>
+  <div class="container">
+    <h2>Paying made easy</h2>
+    <div class="cards">
+      <div class="card"><img src="mastercard.png" alt="MasterCard"></div>
+      <div class="card"><img src="visa.png" alt="Visa"></div>
+      <div class="card"><img src="paygo.png" alt="Pay&Go"></div>
+      <div class="card"><img src="ndb.png" alt="NDB Bank"></div>
+      <div class="card"><img src="directpay.png" alt="DirectPay"></div>
+    </div>
+    <a href="#" class="btn">Get your funds now</a>
+    <div class="footer">More features in the App</div>
   </div>
 
-  <script>
-    <form id="loanForm">
-  <input type="text" name="first_name" required>
-  <button type="submit">Submit</button>
-</form>
-
-<script>
-  const form = document.getElementById('loanForm');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    try {
-      const res = await fetch('https://script.google.com/macros/s/AKfycbzLWA6FsRJKULhJhfN_7QlTMjUz82vGtzERah6Ld-EFofarQOrl-hY9CNwby_aH_-_bwQ/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const result = await res.text();
-      alert("Submitted: " + result);
-    } catch (err) {
-      console.error(err);
-      alert("Error submitting form");
-    }
-  });
-    
-</script>
-      if (response.ok) {
-        alert("Form submitted successfully!");
-        form.reset();
-      } else {
-        alert("Submission failed.");
-      }
-    });
-  </script>
 </body>
 </html>
