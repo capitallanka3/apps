@@ -1,329 +1,88 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ණය අයදුම්පත</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 20px 10px;
+      background-color: #000;
+      color: #aaa;
     }
-
-    .container,
-    .section-wrapper {
-      max-width: 400px;
-      width: 100%;
-      margin: 0 auto 30px;
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .footer {
+      background-color: #000;
+      padding: 40px 20px;
     }
-
-    h2 {
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .footer-links div {
+      flex: 1 1 200px;
+    }
+    .footer-links a {
+      display: block;
+      color: #aaa;
+      text-decoration: none;
       margin-bottom: 10px;
-      text-align: center;
     }
-
-    .slider-container {
-      margin: 20px 0;
+    .footer-contact {
+      border-top: 1px solid #222;
+      padding-top: 30px;
     }
-
-    input[type=range] {
-      width: 100%;
-    }
-
-    .output {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .repayment {
-      margin: 15px 0;
-      font-size: 18px;
-    }
-
-    .btn, .cta, .promo-button {
-      width: 100%;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .promo-button {
-      background-color: #4f46e5;
-    }
-
-    .promo-button:hover {
-      background-color: #254eda;
-    }
-
-    .eligibility-container {
-      max-width: 400px;
-      margin: 0 auto 30px;
-    }
-
-    .card {
-      display: flex;
-      align-items: center;
-      background: white;
-      padding: 16px 20px;
-      border-radius: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
-    }
-
-    .icon {
-      font-size: 28px;
-      color: #9b7bff;
-      background-color: #f1edff;
-      border-radius: 50%;
-      padding: 10px;
-      margin-right: 16px;
-    }
-
-    .info h3 {
-      margin: 0;
-      font-size: 18px;
-      color: #222;
-    }
-
-    .info p {
-      margin: 4px 0 0;
-      color: #555;
-      font-size: 15px;
-    }
-
-    .promo-section {
-      max-width: 400px;
-      width: 100%;
-      margin: 40px auto;
-      background-color: #f9f9ff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .promo-image {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .promo-text {
-      margin-top: 20px;
-      text-align: center;
-      color: #333;
-      font-size: 18px;
-    }
-
-    .steps-section {
-      max-width: 400px;
-      width: 100%;
-      margin: 30px auto;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
+    .footer-contact h3 {
+      color: #fff;
       margin-bottom: 15px;
-      background-color: #e0e7ff !important;
-      padding: 10px;
-      border-radius: 10px;
     }
-
-    .number {
-      background-color: #4f46e5;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 12px;
+    .footer-contact p {
+      margin: 8px 0;
+      color: #7fffaf;
+      font-size: 16px;
     }
-
-    .check {
-      margin-left: auto;
-      color: green;
-      font-size: 24px;
-      font-weight: bold;
+    .footer-contact i {
+      margin-right: 10px;
+      color: #7fffaf;
     }
-
-    .step .text {
-      flex: 1;
-      text-align: left;
-    }
-
-    .features-section {
-      max-width: 400px;
-      width: 100%;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .features-section h2 {
-      text-align: center;
+    .social-icons a {
+      margin-right: 15px;
+      color: #aaa;
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Loan Calculator -->
-  <div class="container">
-    <h2>රු 500,000 දක්වා ණය – සම්පූර්ණයෙන්ම Online!</h2>
-    <p>සරල අයදුම් ක්‍රියාවලියක් – ඔබේ හැඳුනුම්පත පමණක් අවශ්‍ය වේ.</p>
-
-    <div class="slider-container">
-      <label for="loanRange">ඔබගේ ණය මුදල තෝරන්න:</label>
-      <input type="range" id="loanRange" min="30000" max="500000" step="10000" value="30000" />
-      <div class="output">රු <span id="loanAmount">30,000</span></div>
-    </div>
-
-    <div class="repayment">
-      මුළු ආපසු ගෙවීමේ මුදල: රු <span id="repaymentAmount">32,400</span><br>
-      පොලී අනුපාතය: <span id="interestRate">8%</span><br>
-      <strong>කාලය:</strong> <span id="duration">6</span> මාස<br>
-      <strong>මාසික ගෙවීම:</strong> රු <span id="monthlyPayment">5,400</span>
-    </div>
-
-    <button class="btn">ණයක් ඉල්ලන්න</button>
-  </div>
-
-  <!-- Eligibility -->
-  <div class="eligibility-container">
-    <div class="card">
-      <div class="icon">👤</div>
-      <div class="info">
-        <h3>වයස</h3>
-        <p>අවුරුදු 20–60 අතර</p>
+  <footer class="footer">
+    <div class="footer-links">
+      <div>
+        <a href="#">Home</a>
+        <a href="#">Apply for a loan</a>
+        <a href="#">Privacy policy</a>
+        <a href="#">Help</a>
+      </div>
+      <div>
+        <a href="#">How to pay</a>
+        <a href="#">About</a>
+        <a href="#">Terms & conditions</a>
       </div>
     </div>
-    <div class="card">
-      <div class="icon">📍</div>
-      <div class="info">
-        <h3>නවසී ස්ථානය</h3>
-        <p>ශ්‍රී ලංකාවේ නවාසිකයෙකු වීම</p>
+    <div class="footer-contact">
+      <h3>Contact us:</h3>
+      <p><i class="fas fa-phone-alt"></i>0114279800</p>
+      <p><i class="fas fa-envelope"></i>help@ceyloan.lk</p>
+      <p><i class="fas fa-clock"></i>Daily 8:00 AM - 10:30 PM</p>
+      <div class="social-icons">
+        <span>Follow us</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    <div class="card">
-      <div class="icon">💳</div>
-      <div class="info">
-        <h3>රැකියාව</h3>
-        <p>ස්ථිර ආදායමක් තිබීම</p>
-      </div>
-    </div>
-    <button class="cta">දැන්ම ණයක් ඉල්ලන්න</button>
-  </div>
-
-  <!-- Promo -->
-  <section class="promo-section">
-    <img src="https://i.ibb.co/nMDZ3sMb/pexels-moose-photos-170195-1036622.jpg" class="promo-image" />
-    <div class="promo-text">
-      <p>ඔබගේ පළමු online ණය – විනාඩි 15න්!</p>
-      <button class="promo-button">දැන්ම ඉල්ලන්න</button>
-    </div>
-  </section>
-
-  <!-- Steps -->
-  <div class="steps-section">
-    <div class="step">
-      <div class="number">1</div>
-      <div class="text"><strong>ඔබේ ණය මුදල තෝරන්න</strong></div>
-    </div>
-    <div class="step">
-      <div class="number">2</div>
-      <div class="text"><strong>තිරණය සඳහා රැදී සිටින්න</strong></div>
-    </div>
-    <div class="step">
-      <div class="number">3</div>
-      <div class="text"><strong>ඔබගේ ගිණුමට මුදල් ලැබේ</strong></div>
-      <div class="check">✔</div>
-    </div>
-  </div>
-
-  <!-- Features -->
-  <div class="features-section">
-    <h2>අපගේ විශේෂත්වය</h2>
-    <div class="card">
-      <div class="icon">~</div>
-      <div class="info">
-        <h3>ලභාදයකි</h3>
-        <p>අවම ආපසු ගෙවීම් මුදලක් නිසා අපගේ සේවාව සුපිරියකි</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="icon">✓</div>
-      <div class="info">
-        <h3>විශ්වාසනීයයි</h3>
-        <p>Capital Lanka යනු වගකීමකින් යුතු සේවාවකි</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="icon">101</div>
-      <div class="info">
-        <h3>සරලයි</h3>
-        <p>ඉක්මන් හා සරල මුදල් විස්දැම් ඔබගේ නිවසේ සිටම</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Second Promo -->
-  <section class="promo-section">
-    <img src="https://i.ibb.co/q3W93MjW/features.png" class="promo-image" />
-    <div class="promo-text">
-      <p>Wait for the decision<br>Decision made in just 1 minute</p>
-      <button class="promo-button">Apply for a loan</button>
-    </div>
-  </section>
-
-  <script>
-    const loanRange = document.getElementById("loanRange");
-    const loanAmount = document.getElementById("loanAmount");
-    const repaymentAmount = document.getElementById("repaymentAmount");
-    const interestRate = document.getElementById("interestRate");
-    const duration = document.getElementById("duration");
-    const monthlyPayment = document.getElementById("monthlyPayment");
-
-    function updateLoanDetails(value) {
-      const loan = parseInt(value);
-      let months = 6;
-      if (loan <= 50000) months = 6;
-      else if (loan <= 160000) months = 12;
-      else if (loan <= 350000) months = 24;
-      else months = 36;
-
-      const interest = loan * 0.08;
-      const totalRepayment = loan + interest;
-      const monthly = totalRepayment / months;
-
-      loanAmount.textContent = loan.toLocaleString();
-      repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
-      duration.textContent = months;
-      monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
-    }
-
-    updateLoanDetails(loanRange.value);
-
-    loanRange.addEventListener("input", function () {
-      updateLoanDetails(this.value);
-    });
-  </script>
+  </footer>
 
 </body>
 </html>
