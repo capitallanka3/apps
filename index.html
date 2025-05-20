@@ -1,91 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paying Made Easy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ණය අයදුම්පත</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f8fb;
       margin: 0;
-      padding: 0;
-      text-align: center;
+      padding: 20px;
+      scroll-behavior: smooth;
     }
 
     .container {
-      background: white;
-      border-radius: 20px;
       max-width: 400px;
-      margin: 50px auto;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      transform: rotate(45deg);
+      width: 100%;
+      margin: auto;
     }
 
     .card {
-      width: 100px;
-      height: 60px;
-      border-radius: 15px;
-      background-color: #fff;
       display: flex;
       align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      background: white;
+      padding: 16px 20px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
     }
 
-    .card img {
-      width: 80%;
-      height: auto;
-      transform: rotate(-45deg);
+    .icon {
+      font-size: 28px;
+      color: #9b7bff;
+      background-color: #f1edff;
+      border-radius: 50%;
+      padding: 10px;
+      margin-right: 16px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #00c853;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      text-decoration: none;
-      margin-bottom: 15px;
-    }
-
-    .footer {
+    .info h3 {
+      margin: 0;
       font-size: 18px;
+      color: #222;
+    }
+
+    .info p {
+      margin: 4px 0 0;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .cta {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #917aff, #a48aff);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
+    }
+
+    .loan-form {
+      margin-top: 60px;
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .loan-form h2 {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .loan-form input,
+    .loan-form button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .loan-form button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h2>Paying made easy</h2>
-    <div class="cards">
-      <div class="card"><img src="mastercard.png" alt="MasterCard"></div>
-      <div class="card"><img src="visa.png" alt="Visa"></div>
-      <div class="card"><img src="paygo.png" alt="Pay&Go"></div>
-      <div class="card"><img src="ndb.png" alt="NDB Bank"></div>
-      <div class="card"><img src="directpay.png" alt="DirectPay"></div>
+    <div class="card">
+      <div class="icon">👤</div>
+      <div class="info">
+        <h3>වයස</h3>
+        <p>අවුරුදු 20–60 අතර</p>
+      </div>
     </div>
-    <a href="#" class="btn">Get your funds now</a>
-    <div class="footer">More features in the App</div>
+    <div class="card">
+      <div class="icon">📍</div>
+      <div class="info">
+        <h3>පදිංචි ස්ථානය</h3>
+        <p>ශ්‍රී ලංකාවේ පදිංචි විය යුතුය</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">💳</div>
+      <div class="info">
+        <h3>රැකියාව</h3>
+        <p>ආදායමක් තිබිය යුතුය</p>
+      </div>
+    </div>
+
+    <button class="cta" onclick="scrollToForm()">අයදුම් කරන්න</button>
   </div>
+
+  <!-- Loan Application Form Section -->
+  <div id="loanForm" class="loan-form">
+    <h2>ණය අයදුම්පත</h2>
+    <input type="text" placeholder="සම්පුර්ණ නම" required>
+    <input type="number" placeholder="දුරකථන අංකය" required>
+    <input type="number" placeholder="අවශ්‍යණය මුදල (රු.)" required>
+    <button type="submit">යවන්න</button>
+  </div>
+
+  <!-- JavaScript for smooth scroll -->
+  <script>
+    function scrollToForm() {
+      document.getElementById('loanForm').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
