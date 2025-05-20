@@ -1,19 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Footer</title>
+  <title>නද් අයදුම්පබ්</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px 10px;
+    }
+
+    .container,
+    .section-wrapper,
+    .promo-section,
+    .eligibility-container,
+    .features-section,
+    .steps-section {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto 30px;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width: 600px) {
+      .container,
+      .section-wrapper,
+      .promo-section,
+      .eligibility-container,
+      .features-section,
+      .steps-section {
+        max-width: 500px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container,
+      .section-wrapper,
+      .promo-section,
+      .eligibility-container,
+      .features-section,
+      .steps-section {
+        max-width: 768px;
+      }
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .slider-container {
+      margin: 20px 0;
+    }
+
+    input[type=range] {
+      width: 100%;
+    }
+
+    .output {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .repayment {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    .btn, .cta, .promo-button {
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .promo-button {
+      background-color: #4f46e5;
+    }
+
+    .promo-button:hover {
+      background-color: #254eda;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 16px 20px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    .icon {
+      font-size: 28px;
+      color: #9b7bff;
+      background-color: #f1edff;
+      border-radius: 50%;
+      padding: 10px;
+      margin-right: 16px;
+    }
+
+    .info h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #222;
+    }
+
+    .info p {
+      margin: 4px 0 0;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .promo-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .promo-text {
+      margin-top: 20px;
+      text-align: center;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      background-color: #e0e7ff !important;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .number {
+      background-color: #4f46e5;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+    .check {
+      margin-left: auto;
+      color: green;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .step .text {
+      flex: 1;
+      text-align: left;
+    }
+
+    /* Footer Styling */
+    footer {
       background-color: #000;
       color: #aaa;
-    }
-    .footer {
-      background-color: #000;
       padding: 40px 20px;
     }
     .footer-links {
@@ -57,7 +220,19 @@
 </head>
 <body>
 
-  <footer class="footer">
+  <!-- All content above remains the same -->
+
+  <!-- Second Promo -->
+  <section class="promo-section">
+    <img src="https://i.ibb.co/q3W93MjW/features.png" class="promo-image" />
+    <div class="promo-text">
+      <p>Wait for the decision<br>Decision made in just 1 minute</p>
+      <button class="promo-button">Apply for a loan</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
     <div class="footer-links">
       <div>
         <a href="#">Home</a>
